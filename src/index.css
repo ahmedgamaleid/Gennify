@@ -1,13 +1,707 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Importin
+ Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+.loading-container {
+  position: relative;
+  display: inline-block;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.loading-logo {
+  width: 50%;
+  height: 50%;
 }
+
+/* Steam effect container */
+.steam {
+  position: absolute;
+  top: -30px; /* Adjust based on where you want the steam to start */
+  left: 50%;
+  width: 150px; /* Container size */
+  height: 150px; /* Container size */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Gray steam layers */
+.steam .layer {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(128, 128, 128, 0.5); /* Medium gray color with transparency */
+  filter: blur(8px); /* Blurring effect */
+  border-radius: 50%; /* Circular shape */
+  animation: steam-animation 2.5s infinite ease-in-out; /* Faster steam-like animation */
+}
+
+/* Layer sizes and positions for steam effect */
+.steam .layer1 {
+  width: 200px;
+  height: 200px;
+  top: -60px;
+  left: -25px;
+  animation-duration: 2.8s;
+}
+
+.steam .layer2 {
+  width: 180px;
+  height: 180px;
+  top: -50px;
+  left: -20px;
+  animation-duration: 2.6s;
+}
+
+.steam .layer3 {
+  width: 160px;
+  height: 160px;
+  top: -40px;
+  left: -15px;
+  animation-duration: 2.4s;
+}
+
+.steam .layer4 {
+  width: 140px;
+  height: 140px;
+  top: -30px;
+  left: -10px;
+  animation-duration: 2.2s;
+}
+
+.steam .layer5 {
+  width: 120px;
+  height: 120px;
+  top: -20px;
+  left: -5px;
+  animation-duration: 2s;
+}
+
+.steam .layer6 {
+  width: 100px;
+  height: 100px;
+  top: -10px;
+  left: 0;
+  animation-duration: 1.8s;
+}
+
+.steam .layer7 {
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 5px;
+  animation-duration: 1.6s;
+}
+
+.steam .layer8 {
+  width: 60px;
+  height: 60px;
+  top: 10px;
+  left: 10px;
+  animation-duration: 1.4s;
+}
+
+.steam .layer9 {
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  left: 15px;
+  animation-duration: 1.2s;
+}
+
+.steam .layer10 {
+  width: 20px;
+  height: 20px;
+  top: 30px;
+  left: 20px;
+  animation-duration: 1s;
+}
+
+/* Steam-like movement */
+@keyframes steam-animation {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-60px) scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-120px) scale(1);
+    opacity: 0.2;
+  }
+}
+
+/* Ensure that the navbar doesn't overlap content */
+/* Adjust the padding-top based on your navbar's height if necessary */
+body {
+  /* padding-top: 56px; */
+  font-family: "Comfortaa", sans-serif !important;
+  overflow-x: hidden;
+}
+.font {
+  color: black !important;
+}
+
+.landing{
+background-color: black;
+border-radius: 1%;
+color: white;
+justify-content: center;
+align-items: center;
+height: 75vh;
+ overflow:'hidden';
+}
+/* Light background color */
+.bg-light {
+  background-color: white;
+}
+
+/* Dark background color with white text */
+.bg-dark {
+  background-color: black;
+  color: white; /* Ensures text is visible on a dark background */
+}
+
+/* Dark text color */
+.text-dark {
+  color: black;
+}
+
+/* White text color */
+.text-white {
+  color: white;
+}
+
+/* Code styling for better readability */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* home /////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Ensure that the logo has the correct font family */
+/* Ensure that the logo has the correct font styles */
+/* Add specificity to make sure styles are applied */
+.navbar-brand .logo {
+  font-family: 'Times New Roman', serif !important;
+  font-size: 16px;
+  line-height: normal;
+  text-align: start;
+  letter-spacing: normal;
+  text-decoration: none; /* Remove if you want to avoid the strikethrough */
+}
+.categories{
+ padding-bottom: 1rem ;
+
+  /* background: linear-gradient(to bottom, #ecece9, rgb(248, 248, 231)); */
+}
+/* .margintopp{
+  margin-top: rem;
+} */
+.text-nav{
+  color: white;
+}
+/* LandingScreen.css */
+
+.landing-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: row; /* Arrange items in a row */
+  align-items: center;
+  justify-content: space-between; /* Space between text and image */
+  width: 100%;
+  height: 100vh;
+  padding: 0 2rem; /* Adjust padding as needed */
+  box-sizing: border-box; /* Ensure padding is included in width/height */
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column; /* Stack text items vertically */
+  flex: 1; /* Take up remaining space */
+  max-width: 70%; /* Optional: Adjust width as needed */
+  text-align: left;
+}
+.weeee{
+  font-weight: 800;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  margin-left: 2rem;
+
+}
+.textt-container {
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+}
+.collstar {
+  position: relative; /* Allows children to be positioned absolutely */
+  width: 100%; /* Adjust width as needed */
+  height: 300px; /* Adjust height as needed */
+  border: 1px solid #ddd; /* Optional: for visibility */
+  overflow: hidden;
+}
+.star {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  background: gold;
+  clip-path: polygon(
+    50% 0%, 
+    61% 35%, 
+    98% 35%, 
+    68% 57%, 
+    79% 91%, 
+    50% 70%, 
+    21% 91%, 
+    32% 57%, 
+    2% 35%, 
+    39% 35%
+  );
+  margin-left: 8px; /* Space between text and star */
+}
+
+
+.ggg{
+  font-weight:bolder;
+  font-style:normal;
+  font-size: 3rem; margin-bottom: 1%;
+}
+.bording {
+  position: relative; /* Position relative for pseudo-elements */
+  display: inline-block; /* Adjust to wrap the text */
+  padding: 10px; /* Padding around the text */
+  background-color: #fff; /* Background color */
+  color: #333; /* Text color */
+  overflow: hidden; /* Hide overflow from pseudo-elements */
+}
+
+.bording::before,
+.bording::after {
+  content: ''; /* Empty content for pseudo-elements */
+  position: absolute; /* Absolute positioning */
+}
+
+.bording::before {
+  top: 0;
+  left: 0;
+  border-top: 4px solid gold; /* Top border color and width */
+  border-left: 4px solid gold; /* Left border color and width */
+  width: 20px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+}
+
+.bording::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 4px solid gold ; /* Bottom border color and width */
+  border-right: 4px solid gold; /* Right border color and width */
+  width: 20px; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+}
+
+.hero-image {
+  flex: 1; /* Take up remaining space */
+  width: 100%;
+  height: auto;
+  max-width: 50%; /* Adjust max-width as needed */
+  object-fit: cover;
+  border-radius: 10px; /* Optional: add border radius */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #333; /* Adjust color based on background image */
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #666; /* Adjust color based on background image */
+}
+
+.cta-button {
+  background-color: gold;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.wee{
+  font-weight: 800;
+}
+.cta-button:hover {
+  background-color: gold;
+}
+/* about  */
+.centered-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+   /* Full viewport height */
+}
+
+.gold-underline {
+  display: inline-block;
+  position: relative;
+  /* padding-bottom: 1em;  */
+  margin-bottom: 3rem;
+}
+
+.gold-underline::after,
+.gold-underline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 100%; /* Adjust width if needed */
+  height: 2px; /* Thickness of the lines */
+  background-color: gold;
+  transform: translateX(-50%); /* Center the lines horizontally */
+}
+
+.gold-underline::after {
+  bottom: 0;
+  transform: translateX(-50%) translateY(4px); /* Adjust spacing between the lines */
+}
+
+.gold-underline::before {
+  bottom: 4px; /* Adjust spacing between the lines */
+}
+/*  product ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.product-card {
+  position: relative; /* Ensure that the overlay is positioned relative to this container */
+
+}
+
+.product-overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0.6; /* Adjust the opacity as needed */
+  height: -40%; /* Adjust the height based on your design */
+  bottom: -40%;
+  left: 0;
+  padding: 1rem; /* Adjust padding to fit your design */
+  width: 15px;
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.9);
+  display: flex;
+/* Add this to your CSS file */
+.product-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.5);
+  background-color: white;
+}
+
+
+.product-overlay .star {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  background-color: gold; /* Example color for the star */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  margin-left: 5px; /* Space between rating and star */
+  
+}
+}
+/* Add this to your CSS file */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-card img {
+  flex: 1 0 auto; /* Make image grow to fill available space */
+}
+
+.product-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.starrr {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  background: gold;
+  clip-path: polygon(
+    50% 0%, 
+    61% 35%, 
+    98% 35%, 
+    68% 57%, 
+    79% 91%, 
+    50% 70%, 
+    21% 91%, 
+    32% 57%, 
+    2% 35%, 
+    39% 35%
+  );
+}
+.add-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 17%;
+  padding: 1rem; /* Adjust padding as needed */
+  background-color: white; /* Ensures background color is black */
+  border-radius: 0.75rem; /* Adjusts the border radius to 0.75rem (rounded-3) */
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.6); /* Gray shadow */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
+}
+
+.rating{
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.6);
+}
+
+/* Container for the images */
+.image-slider-container {
+  position: relative;
+  overflow: hidden; /* Hide overflow for the slider */
+  height: 300px; /* Adjust based on your image height */
+}
+
+.image-slider {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Prev/Next buttons */
+.prev-slide,
+.next-slide {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev-slide {
+  left: 10px;
+}
+
+.next-slide {
+  right: 10px;
+}
+
+/* Indicators */
+.image-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  border: none;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: white;
+}
+/* Image gallery styling */
+/* Ensure image gallery is below main image on all screens */
+.image-gallery {
+  display: flex;
+  flex-direction: column; /* Stack images vertically */
+}
+
+.image-gallery img {
+  height: 60px; /* Adjust thumbnail height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure images cover the set height */
+  margin-bottom: 10px; /* Space between thumbnails */
+}
+
+/* Add margin top for image gallery on small screens */
+@media (max-width: 767px) {
+  .image-gallery {
+    margin-top: 80px; /* Space between main image and gallery */
+  }
+}
+
+.shhh{
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.6);
+}
+.ssssssss{
+  box-shadow: 0 4px 8px rgba(229, 202, 3, 0.6);
+}
+.ssssssss:hover {
+  color: white !important; /* Force text color to change to white */
+}
+/* Cart.css */
+
+/* Modal overlay to cover the entire screen */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure it appears above other content */
+}
+
+/* Center the modal dialog */
+.modal-dialog {
+  background: #fff;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Basic modal styling */
+.modal-content {
+  padding: 20px;
+}
+
+/* Modal header styling */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close button styling */
+.close {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-row .form-group:last-child {
+  margin-right: 0;
+}
+/* Cart.css */
+
+/* Styles for card icons in the modal */
+.card-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+}
+
+.card-icon img {
+  width: 50px; /* Adjust size as needed */
+  height: auto;
+  margin-left: 5px;
+}
+
+.card-icon input[type="radio"] {
+  display: none;
+}
+/* Custom CSS for modal responsiveness */
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .modal-content {
+    border-radius: 0;
+    height: 100%;
+  }
+
+  .card-icons img {
+    width: 50px; /* Adjust as needed */
+  }
+  .modal-content{
+    margin: 2%;
+  }
+  .modal-dialog{
+    margin: 9%;
+  }
+}
+.full-heightt {
+  height: 46.6vh; /* 75% of the viewport height */
+
+}
+.full-height {
+  height: 75vh; /* 75% of the viewport height */
+}
+
+.btn-outline-warning {
+  border-color: #ffc107;
+  color: #ffc107;
+}
+
+.btn-outline-warning:hover {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.list-unstyled li {
+  font-size: 1.2rem;
+}
+
+.text-center a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+
