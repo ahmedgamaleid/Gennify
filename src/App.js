@@ -66,7 +66,7 @@ function App() {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 8000); // Change the time to simulate loading time
+    }, 6000); // Change the time to simulate loading time
     return () => clearTimeout(timer);
   }, []);
 
@@ -98,7 +98,7 @@ function Loading() {
         <source src={loadingVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video> */}
-      <img src={loadinggiv} className="loading-video vh-100  p-5" />
+      <img src={loadinggiv} className="loading-video vh-100  w-100 p-5" />
     </div>
   </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import logo from '../img/Gennify - Transparent-Photoroom (1).png'; // Adjust the path to your logo image
+import logo from '../img/WhiteCartLogo.png'; // Adjust the path to your logo image
 
 const Footer = () => {
   return (
@@ -16,7 +16,7 @@ const Footer = () => {
           src={logo} 
           alt="Gennify Logo" 
           className="footer-logo mb-3" 
-          style={{ maxWidth: '150px' }} 
+          style={{ maxWidth: '120px' }} 
         />
         <p className="mb-2">&copy; {new Date().getFullYear()} Gennify. All rights reserved.</p>
         <p className="mb-0">
