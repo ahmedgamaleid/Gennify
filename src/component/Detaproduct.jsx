@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react'; 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify'; // Import Toastify
@@ -15,17 +15,29 @@ const Detaproduct = () => {
 
   useEffect(() => {
     const fetchProductDetails = async () => {
-      try {
-        const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${productid}`);
-        const productData = response.data.data;
+      const cachedProduct = localStorage.getItem(`product-${productid}`);
+
+      if (cachedProduct) {
+        // Load product data from localStorage
+        const productData = JSON.parse(cachedProduct);
         setProduct(productData);
         setSelectedImage(productData.imageCover);
         setLoading(false);
+      } else {
+        // Fetch product data from API if not found in localStorage
+        try {
+          const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${productid}`);
+          const productData = response.data.data;
+          setProduct(productData);
+          setSelectedImage(productData.imageCover);
+          setLoading(false);
 
-        localStorage.setItem('product', JSON.stringify(productData));
-      } catch (err) {
-        setError("Failed to fetch product details");
-        setLoading(false);
+          // Save product data to localStorage
+          localStorage.setItem(`product-${productid}`, JSON.stringify(productData));
+        } catch (err) {
+          setError("Failed to fetch product details");
+          setLoading(false);
+        }
       }
     };
 
@@ -67,7 +79,7 @@ const Detaproduct = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container h-100">
       <div className="row shhh rounded-4">
         {product ? (
           <>
@@ -104,25 +116,23 @@ const Detaproduct = () => {
                   <span>Quantity: {product.ratingsQuantity} piece available</span>
                 </div>
                 <p>
-  Rating: 
-  <span className="text-warning d-flex align-items-center fs-6">
-    {product.ratingsAverage}
-    <span className="star one ms-2 "></span> {/* Use ms-2 for spacing */}
-  </span>
-</p>
-
+                  Rating: 
+                  <span className="text-warning d-flex align-items-center fs-6">
+                    {product.ratingsAverage}
+                    <span className="star one ms-2 "></span> {/* Use ms-2 for spacing */}
+                  </span>
+                </p>
 
                 <div className="price-section mt-3">
                   <p className="text-muted">Brand: <p>{product.brand.name}</p></p>
                   <h3 className="text-success">Now: ${product.price}</h3>
                   <p className="text-success">Discount:70% Off</p>
                 </div>
-{/* <i className="fa-solid fa-cart-plus"></i> */}
+
                 <div className="mt-5 align-left">
-                <button className="btn btn-outline-warning ssssssss btn-lg my-5 px-5 rounded-5" onClick={addToCart}>
-  Add to cart
-</button>
-                 
+                  <button className="btn btn-outline-warning ssssssss btn-lg my-5 px-5 rounded-5" onClick={addToCart}>
+                    Add to cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -136,23 +146,3 @@ const Detaproduct = () => {
 };
 
 export default Detaproduct;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
