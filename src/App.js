@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import loadingVideo from "./videos/Gennify.mp4";
+import loadinggiv from "./img/Gennify.gif";
 import Layout from "./component/Layout";
 import Register from "./component/Register";
 import ReactLoading from "react-loading";
@@ -82,10 +82,11 @@ function Loading() {
   return (
     <div className="loading-container text-center d-flex justify-content-center align-items-center vh-100 ">
     <div className="d-flex flex-column justify-content-center align-items-center vh-100">
-      <video className="loading-video h-100 w-100" autoPlay loop muted>
+      {/* <video className="loading-video h-100 w-100" autoPlay loop muted>
         <source src={loadingVideo} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
+      <img src={loadinggiv} className="loading-video h-100 w-100" />
     </div>
   </div>
   );
