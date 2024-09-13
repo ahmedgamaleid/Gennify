@@ -706,4 +706,25 @@ form {
 .text-center a:hover {
   text-decoration: underline;
 }
+.offline-container {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+
+.offline-icon {
+  font-size: 4rem;
+  color: #721c24; /* Dark red for the icon */
+}
+
+.offline-container h2 {
+  font-weight: bold;
+  color: #721c24; /* اللون الداكن للعناوين */
+}
+
+.offline-container p {
+  font-size: 1.2rem;
+  color: #721c24; /* اللون الداكن للنص */
+}
+
+
 

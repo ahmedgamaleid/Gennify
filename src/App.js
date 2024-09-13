@@ -18,6 +18,7 @@ import Products from "./component/Products";
 import Detaproduct from "./component/Detaproduct";
 import Cart from "./component/Cart";
 import Footer from "./component/Footer";
+import { Offline, Online } from "react-detect-offline";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -75,7 +76,18 @@ function App() {
     <RouterProvider router={routes} />
   </TrendingAndCategProvider>
 }
-</>;
+
+   
+    <Offline><div className="offline-container d-flex justify-content-center align-items-center vh-100">
+  <div className="text-center">
+    <i className="fas fa-wifi-slash offline-icon mb-3"></i>
+    <h2 className="mb-2">You're Offline!</h2>
+    <p>Oops, it seems you're not connected to the internet.</p>
+  </div>
+</div>
+</Offline>
+  
+</>
 }
 
 function Loading() {
