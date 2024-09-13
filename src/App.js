@@ -86,7 +86,7 @@ function Loading() {
         <source src={loadingVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video> */}
-      <img src={loadinggiv} className="loading-video vh-100 w-100" />
+      <img src={loadinggiv} className="loading-video vh-100  p-5" />
     </div>
   </div>
   );
