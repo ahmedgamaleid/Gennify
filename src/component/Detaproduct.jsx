@@ -138,7 +138,7 @@ const Detaproduct = () => {
             </div>
           </>
         ) : (
-          <p>No product found</p>
+          <div className='vh-100 text-center'><h3>plz wait data</h3></div>
         )}
       </div>
     </div>
