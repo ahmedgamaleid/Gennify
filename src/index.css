@@ -741,3 +741,8 @@ form {
 
 
 
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure the navbar stays on top of other content */
+}

@@ -38,7 +38,7 @@ const Navbar = ({ username, handleLogout }) => {
   const isLoggedIn = localStorage.getItem('token') !== null;
 
   return (
-    <nav className={`navbar navbar-expand-md ${navBackground} mb-3`}>
+    <nav className={`navbar navbar-expand-md ${navBackground} mb-3    sticky-navbar` }>
       <div className="container-fluid">
         <a className={`navbar-brand fs-4 logo mx-5 ${textColor}`} href="#">
           <img src={backgroundImagelogo} style={{ width: "50px" }} alt="Logo" />
