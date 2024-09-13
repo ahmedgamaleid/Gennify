@@ -76,61 +76,61 @@ const Register = () => {
               register();
             }}
           >
-            <label>First Name:</label>
+            <label>First Name</label>
             <input
               type="text"
               name="first_name"
               value={user.first_name}
               onChange={handleInputChange}
-              className="form-control"
+              className="form-control colorwarning"
             />
             {showAlert("first_name")}
-            <label>Last Name:</label>
+            <label>Last Name</label>
             <input
               type="text"
               name="last_name"
               value={user.last_name}
               onChange={handleInputChange}
-              className="form-control"
+              className="form-control colorwarning"
             />
             {showAlert("last_name")}
-            <label>Age:</label>
+            <label>Age</label>
             <input
               type="text"
               name="age"
               value={user.age}
               onChange={handleInputChange}
-              className="form-control"
+              className="form-control colorwarning"
             />
             {showAlert("age")}
-            <label>Email:</label>
+            <label>Email</label>
             <input
               type="text"
               name="email"
               value={user.email}
               onChange={handleInputChange}
-              className="form-control"
+              className="form-control colorwarning"
             />
             {showAlert("email")}
-            <label>Password:</label>
+            <label>Password</label>
             <input
               type="password"
               name="password"
               value={user.password}
               onChange={handleInputChange}
-              className="form-control"
+              className="form-control colorwarning"
             />
             {showAlert("password")}
             <button
               type="submit"
-              className="btn btn-outline-warning w-100 mt-5 p-2 fs-4 rounded-5"
+              className="btn btn-outline-warning ssssssss w-100 mt-5 mb-3 p-2 fs-4 rounded-5"
             >
               Register
             </button>
             {apimsg && <h1 className="bg-danger">{apimsg}</h1>}
           </form>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 mt-3">
   <div className="d-flex flex-column justify-content-center align-items-center h-100">
     <h2 className="mb-4">What Happens Next?</h2>
     <ol className="list-unstyled">

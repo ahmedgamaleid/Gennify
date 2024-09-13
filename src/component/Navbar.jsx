@@ -44,7 +44,7 @@ const Navbar = ({ username, handleLogout }) => {
           <img src={backgroundImagelogo} style={{ width: "50px" }} alt="Logo" />
         </a>
         <button
-          className="navbar-toggler border border-0"
+          className="navbar-toggler colorwarning  border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -52,10 +52,10 @@ const Navbar = ({ username, handleLogout }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon border border-0"></span>
+          <span className="navbar-toggler-icon  colorwarning border-0"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className={`navbar-nav me-auto mb-2 mb-lg-0`}>
+          <ul className={`navbar-nav me-auto mb-2 mb-lg-0` }>
             {!isLoggedIn ? (
               <>
                 <li className="nav-item">

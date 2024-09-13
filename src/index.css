@@ -500,7 +500,9 @@ code {
 .next-slide {
   right: 10px;
 }
-
+.colorwarning{
+  color: #ffc107 !important;
+}
 /* Indicators */
 .image-indicators {
   position: absolute;

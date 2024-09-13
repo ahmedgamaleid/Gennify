@@ -79,7 +79,7 @@ const Detaproduct = () => {
   }
 
   return (
-    <div className="container h-100">
+    <div className="container mt-5  h-100">
       <div className="row shhh rounded-4">
         {product ? (
           <>
@@ -138,7 +138,9 @@ const Detaproduct = () => {
             </div>
           </>
         ) : (
-          <div className='vh-100 text-center'><h3>plz wait data</h3></div>
+<div className="d-flex justify-content-center align-items-center vh-100">
+  <h3>Please wait, loading data...</h3>
+</div>
         )}
       </div>
     </div>

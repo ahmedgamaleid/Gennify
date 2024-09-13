@@ -65,14 +65,14 @@ const Login = (props) => {
     <p className='lead mt-5'>Please log in to access your account and explore all features in Gennify Platform.</p>
   </div>
 </div>
-        <div className='col-6 full-heightt'>
+        <div className='col-md-6  mb-5 full-heightt'>
           <form className='' onSubmit={(e) => { e.preventDefault(); login(); }}>
             <label>Email</label>
             <input
               type='text'
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              className='form-control w-100 my-3 p-2'
+              className='form-control'
             />
             {showAlert('email')}
             <label className='py-1'>Password</label>
@@ -83,8 +83,8 @@ const Login = (props) => {
               className='form-control w-100 my-3 m-1 p-2'
             />
             {showAlert('password')}
-            <button type='submit' className='btn btn-outline-warning w-100 mt-5 p-2 fs-4 rounded-5'>Login</button>
-            {apiMsg && <h1 className='bg-danger'>{apiMsg}</h1>}
+            <button type='submit' className='btn btn-outline-warning ssssssss w-100 mb-5 mt-5 p-2 fs-4 rounded-5'>Login</button>
+            {apiMsg && <h1 className='text-danger  p-3  mb-5  text-center '>{apiMsg} try again</h1>}
           </form>
         </div>
         
