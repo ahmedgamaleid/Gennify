@@ -48,6 +48,27 @@ function App() {
     },
   ]);
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     try {
+  //       const usernameInfo = jwtDecode(token);
+  //       console.log("Decoded username info:", usernameInfo); // Add this line
+  //       setUsername(usernameInfo.first_name);
+  //       setIsLogin(true);
+  //     } catch (error) {
+  //       console.error("Token decoding error:", error);
+  //     }
+  //   }
+  //   setIsLoading(true);
+  // }, [isLogin]);
+
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 6000); // Change the time to simulate loading time
+  //   return () => clearTimeout(timer);
+  // }, []);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -60,16 +81,16 @@ function App() {
         console.error("Token decoding error:", error);
       }
     }
-    setIsLoading(true);
-  }, [isLogin]);
-
+    setIsLoading(true); // You can move this outside the condition if it should always load initially
+  }, []); // <- Empty dependency array means it only runs once when the component mounts
+  
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 6000); // Change the time to simulate loading time
+    }, 8000); // Simulate loading time
     return () => clearTimeout(timer);
-  }, []);
-
+  }, []); // <- Also an empty dependency array, to run this effect only once on mount
+  
   return <>
  {isLoading ? <Loading /> : 
   <TrendingAndCategProvider>
@@ -98,7 +119,7 @@ function Loading() {
         <source src={loadingVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video> */}
-      <img src={loadinggiv} className="loading-video vh-100  w-100 p-5" />
+      <img src={loadinggiv} className="loading-video vh-100   p-5" />
     </div>
   </div>
   );

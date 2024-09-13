@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react'; 
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { toast } from 'react-toastify'; // Import Toastify
+import { toast } from 'react-toastify';
+
+const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // Cache expiration time in milliseconds (1 day)
 
 const Detaproduct = () => {
   const { productid } = useParams();
@@ -16,28 +18,36 @@ const Detaproduct = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       const cachedProduct = localStorage.getItem(`product-${productid}`);
-
+      
       if (cachedProduct) {
-        // Load product data from localStorage
-        const productData = JSON.parse(cachedProduct);
-        setProduct(productData);
-        setSelectedImage(productData.imageCover);
-        setLoading(false);
-      } else {
-        // Fetch product data from API if not found in localStorage
-        try {
-          const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${productid}`);
-          const productData = response.data.data;
+        const { productData, timestamp } = JSON.parse(cachedProduct);
+        
+        const currentTime = new Date().getTime();
+        if (currentTime - timestamp < CACHE_EXPIRATION_TIME) {
+          // Use cached product data if it's not expired
           setProduct(productData);
           setSelectedImage(productData.imageCover);
           setLoading(false);
-
-          // Save product data to localStorage
-          localStorage.setItem(`product-${productid}`, JSON.stringify(productData));
-        } catch (err) {
-          setError("Failed to fetch product details");
-          setLoading(false);
+          return;
         }
+      }
+
+      // Fetch product data from API if not found in localStorage or expired
+      try {
+        const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${productid}`);
+        const productData = response.data.data;
+        setProduct(productData);
+        setSelectedImage(productData.imageCover);
+        setLoading(false);
+
+        // Save product data and current timestamp to localStorage
+        localStorage.setItem(
+          `product-${productid}`,
+          JSON.stringify({ productData, timestamp: new Date().getTime() })
+        );
+      } catch (err) {
+        setError("Failed to fetch product details");
+        setLoading(false);
       }
     };
 
@@ -64,14 +74,18 @@ const Detaproduct = () => {
     if (!cart.find(item => item.id === product.id)) {
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
-      toast.success('Product added to cart!'); // Show success message
+      toast.success('Product added to cart!');
     } else {
-      toast.info('Product is already in the cart'); // Optional: Inform if already in the cart
+      toast.info('Product is already in the cart');
     }
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <h3>Please wait, loading data...</h3>
+      </div>
+    );
   }
 
   if (error) {
@@ -119,7 +133,7 @@ const Detaproduct = () => {
                   Rating: 
                   <span className="text-warning d-flex align-items-center fs-6">
                     {product.ratingsAverage}
-                    <span className="star one ms-2 "></span> {/* Use ms-2 for spacing */}
+                    <span className="star one ms-2 "></span>
                   </span>
                 </p>
 
@@ -138,9 +152,9 @@ const Detaproduct = () => {
             </div>
           </>
         ) : (
-<div className="d-flex justify-content-center align-items-center vh-100">
-  <h3>Please wait, loading data...</h3>
-</div>
+          <div className="d-flex justify-content-center align-items-center vh-100">
+            <h3>Please wait, loading data...</h3>
+          </div>
         )}
       </div>
     </div>
